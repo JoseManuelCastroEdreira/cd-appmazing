@@ -1,4 +1,4 @@
-package Model;
+package com.campusdual.appmazing.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,8 +11,6 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column
     private int id;
     @Column
     private String name;
