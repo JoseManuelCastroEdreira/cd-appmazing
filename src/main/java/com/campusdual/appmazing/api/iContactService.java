@@ -7,10 +7,17 @@ import com.campusdual.appmazing.model.dto.ContactDTO;
 
 public interface iContactService {
 
+    ContactDTO queryProduct(ContactDTO contactDTO);
+
     ContactDTO queryProduct(Contact product);
     List<ContactDTO> queryAllProducts();
 
     int insertProduct(ContactDTO product);
+
+    int insertContact(ContactDTO contactDTO);
+
     int updateProduct(ContactDTO product);
     int deleteProduct(ContactDTO product);
+
+    int deleteContact(ContactDTO contactDTO);
 }

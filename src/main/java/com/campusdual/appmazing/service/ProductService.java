@@ -1,4 +1,4 @@
-package service;
+package com.campusdual.appmazing.service;
 
 import com.campusdual.appmazing.api.iProductService;
 import com.campusdual.appmazing.model.Product;
@@ -23,8 +23,7 @@ public class ProductService implements iProductService {
     public ProductDTO queryProduct(ProductDTO productDTO) {
         Product product = ProductMapper.INSTANCE.toEntity(productDTO);
         Product productFinal = this.productDao.getReferenceById(product.getId());
-        ProductDTO dto = ProductMapper.INSTANCE.toDTO(productFinal);
-        return null;
+        return ProductMapper.INSTANCE.toDTO(productFinal);
     }
 
     @Override
@@ -51,4 +50,5 @@ public class ProductService implements iProductService {
         this.productDao.delete(product);
         return id;
     }
+
 }

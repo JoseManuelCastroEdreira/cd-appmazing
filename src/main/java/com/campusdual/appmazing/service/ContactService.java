@@ -1,4 +1,4 @@
-package service;
+package com.campusdual.appmazing.service;
 
 import com.campusdual.appmazing.api.iContactService;
 import com.campusdual.appmazing.model.Contact;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service("ContactService")
@@ -28,8 +27,18 @@ public class ContactService implements iContactService {
     }
 
     @Override
+    public ContactDTO queryProduct(Contact product) {
+        return null;
+    }
+
+    @Override
     public List<ContactDTO> queryAllProducts() {
         return ContactMapper.INSTANCE.toDTOList(this.contactDao.findAll());
+    }
+
+    @Override
+    public int insertProduct(ContactDTO product) {
+        return 0;
     }
 
     @Override
@@ -42,6 +51,11 @@ public class ContactService implements iContactService {
     @Override
     public int updateProduct(ContactDTO contactDTO) {
         return this.insertContact(contactDTO);
+    }
+
+    @Override
+    public int deleteProduct(ContactDTO product) {
+        return 0;
     }
 
     @Override
