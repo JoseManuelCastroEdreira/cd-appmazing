@@ -20,4 +20,8 @@ public interface iContactService {
     int deleteProduct(ContactDTO product);
 
     int deleteContact(ContactDTO contactDTO);
+
+    List<ContactDTO> queryAllContacts();
+
+    ContactDTO queryContact(ContactDTO contact);
 }

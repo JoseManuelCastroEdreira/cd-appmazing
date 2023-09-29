@@ -2,9 +2,12 @@ package com.campusdual.appmazing.service;
 
 import com.campusdual.appmazing.api.iContactService;
 import com.campusdual.appmazing.model.Contact;
+import com.campusdual.appmazing.model.Product;
 import com.campusdual.appmazing.model.dao.ContactDao;
 import com.campusdual.appmazing.model.dto.ContactDTO;
+import com.campusdual.appmazing.model.dto.ProductDTO;
 import com.campusdual.appmazing.model.dto.dtomapper.ContactMapper;
+import com.campusdual.appmazing.model.dto.dtomapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -64,5 +67,17 @@ public class ContactService implements iContactService {
         Contact contact = ContactMapper.INSTANCE.toEntity(contactDTO);
         this.contactDao.delete(contact);
         return id;
+    }
+
+    @Override
+    public List<ContactDTO> queryAllContacts() {
+            return ContactMapper.INSTANCE.toDTOList(this.contactDao.findAll());
+        };
+
+    @Override
+    public ContactDTO queryContact(ContactDTO contactDTO) {;
+        Contact contact = ContactMapper.INSTANCE.toEntity(contactDTO);
+        Contact contactFinal = this.contactDao.getReferenceById(contact.getId());
+        return ContactMapper.INSTANCE.toDTO(contactFinal);
     }
 }
