@@ -1,5 +1,7 @@
 package com.campusdual.appmazing.model.dto;
 
+import com.campusdual.appmazing.model.Category;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,8 @@ public class ProductDTO {
     private boolean active;
     
     private Date date_added;
+
+    private CategoryDTO category;
 
     public int getId() {
         return id;
@@ -67,5 +71,13 @@ public class ProductDTO {
 
     public void setDate_added(Date date_added) {
         this.date_added = date_added;
+    }
+
+    public CategoryDTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
     }
 }
