@@ -50,4 +50,6 @@ public class ContactController {
     public int deleteContact(@RequestBody ContactDTO contact){
         return this.contactService.deleteContact(contact);
     }
-}
+
+    }
+

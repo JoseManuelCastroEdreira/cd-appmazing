@@ -36,7 +36,7 @@ public class ProductService implements iProductService {
         Product product = ProductMapper.INSTANCE.toEntity(productDTO);
         this.productDao.saveAndFlush(product);
         return product.getId();
-        }
+    }
 
     @Override
     public int updateProduct(ProductDTO productDTO) {
@@ -49,6 +49,22 @@ public class ProductService implements iProductService {
         Product product = ProductMapper.INSTANCE.toEntity(productDTO);
         this.productDao.delete(product);
         return id;
+    }
+
+    @Override
+    public int buyProduct(ProductDTO product, int quantity) {
+        ProductDTO productToBuy = this.queryProduct(product);
+        if (productToBuy.isActive() && quantity <= productToBuy.getStock()){
+            productToBuy.setStock(productToBuy.getStock()-quantity);
+            this.updateProduct(productToBuy);
+        }
+        return productToBuy.getStock();
+    }
+
+    @Override
+    public BigDecimal calculateTotalPrice(ProductDTO product, int quantity) {
+        ProductDTO productToBuy = this.queryProduct(product);
+        return productToBuy.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 
 }

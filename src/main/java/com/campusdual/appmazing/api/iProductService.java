@@ -1,5 +1,6 @@
 package com.campusdual.appmazing.api;
 
+import java.math.BigDecimal;
 import java.util.List;
 import com.campusdual.appmazing.model.dto.ProductDTO;
 
@@ -11,6 +12,8 @@ public interface iProductService {
     int insertProduct(ProductDTO productDTO);
     int updateProduct(ProductDTO productDTO);
     int deleteProduct(ProductDTO productDTO);
+    int buyProduct(ProductDTO product, int quantity);
+    BigDecimal calculateTotalPrice(ProductDTO product, int quantity);
 }
 
 

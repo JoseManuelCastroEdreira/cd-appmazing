@@ -1,9 +1,11 @@
 package com.campusdual.appmazing.service;
 
 import com.campusdual.appmazing.api.iContactService;
+import com.campusdual.appmazing.controller.ProductController;
 import com.campusdual.appmazing.model.Contact;
 import com.campusdual.appmazing.model.Product;
 import com.campusdual.appmazing.model.dao.ContactDao;
+import com.campusdual.appmazing.model.dao.ProductDao;
 import com.campusdual.appmazing.model.dto.ContactDTO;
 import com.campusdual.appmazing.model.dto.ProductDTO;
 import com.campusdual.appmazing.model.dto.dtomapper.ContactMapper;
@@ -75,9 +77,12 @@ public class ContactService implements iContactService {
         };
 
     @Override
-    public ContactDTO queryContact(ContactDTO contactDTO) {;
+    public ContactDTO queryContact(ContactDTO contactDTO) {
+        ;
         Contact contact = ContactMapper.INSTANCE.toEntity(contactDTO);
         Contact contactFinal = this.contactDao.getReferenceById(contact.getId());
         return ContactMapper.INSTANCE.toDTO(contactFinal);
+
     }
-}
+
+    }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.campusdual.appmazing.model.Contact;
 import com.campusdual.appmazing.model.dto.ContactDTO;
+import com.campusdual.appmazing.model.dto.ProductDTO;
 
 public interface iContactService {
 
